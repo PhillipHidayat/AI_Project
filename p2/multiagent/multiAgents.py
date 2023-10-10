@@ -96,12 +96,7 @@ class ReflexAgent(Agent):
             if (distanceToGhost - distanceToPacman) > 0:
                 listOfDistanceToValidFood.append(distanceToPacman)
 
-        minDistanceGhostToPacman = float('inf')      
-        for ghost in newGhostStates:
-            ghostToPacman = manhattanDistance(newPos, ghost.getPosition())
-            if ghostToPacman < minDistanceGhostToPacman:
-                minDistanceGhostToPacman = ghostToPacman
-                
+
         if len(listOfDistanceToValidFood)==0:
             return successorGameState.getScore() +  1/minDistanceToFood 
         
@@ -399,12 +394,6 @@ def betterEvaluationFunction(currentGameState):
             minDistanceToFood = distanceToPacman
         if (distanceToGhost - distanceToPacman) > 0:
             listOfDistanceToValidFood.append(distanceToPacman)
-
-    minDistanceGhostToPacman = float('inf')      
-    for ghost in newGhostStates:
-        ghostToPacman = manhattanDistance(newPos, ghost.getPosition())
-        if ghostToPacman < minDistanceGhostToPacman:
-            minDistanceGhostToPacman = ghostToPacman
             
     if len(listOfDistanceToValidFood)==0:
         return currentGameState.getScore() +  1/minDistanceToFood + sum(newScaredTimes)
